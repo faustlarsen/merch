@@ -13,9 +13,11 @@ function ProductDetail(props) {
         : <h3>Quantity: {product.quantity}</h3>
         }
         <hr></hr>
-        {product.quantity > 0 ? <button onClick={ props.onClickingBuy }> BUY</button> : null }
+        {product.quantity > 0 ? <button onClick={ props.onClickingBuy }>BUY</button> : null }
+        <button onClick={ props.onClickingRestock }>RESTOCK</button>
         <button onClick={() => onClickingDelete(product.id)}>DELETE</button>
         <button onClick={ props.onClickingUpdate }>UPDATE</button>
+        
     </React.Fragment>
   );
 }
@@ -25,6 +27,7 @@ ProductDetail.protoTypes = {
     onClickingDelete: PropTypes.func,
     onClickingUpdate: PropTypes.func,
     onClickingBuy: PropTypes.func,
+    onClickingRestock: PropTypes.func,
 
 }
 

@@ -62,7 +62,6 @@ class ProductControl extends React.Component {
     });
   }
 
-  
   handleBuyClick = (id) => {
     const productToBuy = this.state.masterProductList.filter(
     product => product.id === this.state.selectedProduct.id);
@@ -72,9 +71,6 @@ class ProductControl extends React.Component {
     }
     const editedProductList = this.state.masterProductList
       .filter(product => product.id !==id);
-     
-      console.log(productToBuy);
-      console.log(editedProductList);
     this.setState({
       masterProductList: editedProductList,
       editing: false,
@@ -82,6 +78,22 @@ class ProductControl extends React.Component {
     });
   }
 
+  handleRestockClick = (id) => {
+    const productToRestock = this.state.masterProductList.filter(
+    product => product.id === this.state.selectedProduct.id);
+    console.log(productToRestock[0].quantity);
+    if (productToRestock[0].quantity != 0) {
+      productToRestock[0].quantity++;
+    }
+    const editedRestockProductList = this.state.masterProductList
+      .filter(product => product.id !==id);
+    this.setState({
+      masterProductList: editedRestockProductList,
+      editing: false,
+      selectedProduct: null
+    });
+  }
+  
   //Delete
   handleDeletingProduct = (id) => {
     const newMasterProductList = this.state.masterProductList.filter(product => product.id !== id);
@@ -107,6 +119,7 @@ class ProductControl extends React.Component {
       <ProductDetails
         product = {this.state.selectedProduct}
         onClickingDelete = {this.handleDeletingProduct}
+        onClickingRestock = {this.handleRestockClick}
         onClickingBuy = {this.handleBuyClick}
         onClickingUpdate = {this.handleEditClick} />;
         buttonText = "Product List";
@@ -130,3 +143,8 @@ class ProductControl extends React.Component {
 }
 
 export default ProductControl;
+
+
+
+
+
