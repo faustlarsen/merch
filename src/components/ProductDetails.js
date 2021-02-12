@@ -28,7 +28,6 @@ ProductDetail.protoTypes = {
     onClickingUpdate: PropTypes.func,
     onClickingBuy: PropTypes.func,
     onClickingRestock: PropTypes.func,
-
 }
 
 export default ProductDetail;
