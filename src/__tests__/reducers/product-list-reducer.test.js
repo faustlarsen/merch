@@ -9,6 +9,18 @@ describe('productListReducer', () => {
     id: 1
   };
 
+  const currentState = {
+    1: {name: 'Beer',
+    location: 'Home',
+    quantity: 2, 
+    id: 1},
+    2: {name: 'Vodka',
+    location: "away",
+    quantity: 3,
+    id: 2 }
+  }
+
+
   test('Should return default state if there is no action type passed into the reducer', () => {
     expect(productListReducer({}, {type: null})).toEqual({});
 });
@@ -29,7 +41,19 @@ describe('productListReducer', () => {
        quantity: quantity,
        id: id
      }
+    });
+  });
+     test('Should successfully delete a ticket', () => {
+       action = {
+         type: 'DELETE_PRODUCT',
+         id: 1
+       }
+       expect(productListReducer(currentState, action)).toEqual({
+         2: {name: 'Vodka',
+            location: 'away',
+            quantity: 3,
+            id: 2}
+       });
    })
-})
-
 });
+
