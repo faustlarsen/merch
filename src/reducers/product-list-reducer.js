@@ -9,7 +9,11 @@ export default (state ={}, action) => {
         quantity: quantity,
         id: id
       }
-    })
+    });
+    case 'DELETE_PRODUCT':
+    let newState = {...state};
+    delete newState[id];
+    return newState;
   default:
     return state;
   }
