@@ -14,7 +14,16 @@ export default (state ={}, action) => {
     let newState = {...state};
     delete newState[id];
     return newState;
-  default:
-    return state;
-  }
+    case "EDIT_PRODUCT":
+      return Object.assign({}, state, {
+        [id]: {
+          name: name,
+          location: location,
+          quantity: quantity,
+          id: id
+        }
+      });
+    default:
+      return state;
+    }
 };
