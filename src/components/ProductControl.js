@@ -17,6 +17,20 @@ class ProductControl extends React.Component {
     };
   }
 
+  showFormOnClick = () => { 
+    if (this.state.selectedProduct != null) {
+      this.setState({
+        formVisibleOnPage: false,
+        selectedProduct: null,
+        editing: false
+      });
+    } else {
+      this.setState(prevState => ({
+        formVisibleOnPage: !prevState.formVisibleOnPage
+      }));
+    }
+  }
+
   //Create
   handleAddingNewProductToList = (newProduct) => {
     const newMasterProductList = this.state.masterProductList.concat(newProduct);
@@ -30,20 +44,6 @@ class ProductControl extends React.Component {
   handleChangingSelectedProduct = (id) => {
     const selectedProduct = this.state.masterProductList.filter(product => product.id === id)[0];
     this.setState({selectedProduct: selectedProduct});
-  }
-
-  showFormOnClick = () => { 
-    if (this.state.selectedProduct != null) {
-      this.setState({
-        formVisibleOnPage: false,
-        selectedProduct: null,
-        editing: false
-      });
-    } else {
-      this.setState(prevState => ({
-        formVisibleOnPage: !prevState.formVisibleOnPage
-      }));
-    }
   }
 
   //Edit
